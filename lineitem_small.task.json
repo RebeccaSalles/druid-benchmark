@@ -63,7 +63,7 @@
         "intervals": [
           "1980/2020"
         ]
-      },
+      }
     },
     "ioConfig" : {
       "type" : "index",
