@@ -1,6 +1,5 @@
 {
-  "type" : "index_hadoop",
-  "hadoopCoordinates":"org.apache.hadoop:hadoop-core:0.20.205-emr",
+  "type" : "index",
   "config": {
     "dataSource" : "tpch_lineitem_small",
     "timestampSpec" : {
@@ -51,7 +50,7 @@
     },
     "pathSpec": {
       "type": "static",
-      "paths": "s3:\/\/path\/to\/tpch\/data\/lineitem.tbl.gz"
+      "paths": "druid-benchmark/data/lineitem.tbl.gz"
     },
     "rollupSpec": {
       "aggs": [
