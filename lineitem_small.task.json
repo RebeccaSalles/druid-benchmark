@@ -6,11 +6,30 @@
       "parser" : {
         "type" : "string",
         "parseSpec" : {
-          "format" : "json",
+          "format" : "tsv",
+          "delimiter" : "|",
           "timestampSpec" : {
             "column": "l_shipdate",
             "format": "yyyy-MM-dd"
           },
+          "columns": [
+            "l_orderkey",
+            "l_partkey",
+            "l_suppkey",
+            "l_linenumber",
+            "l_quantity",
+            "l_extendedprice",
+            "l_discount",
+            "l_tax",
+            "l_returnflag",
+            "l_linestatus",
+            "l_shipdate",
+            "l_commitdate",
+            "l_receiptdate",
+            "l_shipinstruct",
+            "l_shipmode",
+            "l_comment"
+          ],
           "dimensionsSpec" : {
             "dimensions" : [
               "l_orderkey",
