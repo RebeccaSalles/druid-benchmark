@@ -87,7 +87,7 @@
       "type" : "index",
       "firehose" : {
         "type" : "local",
-        "baseDir" : "data/",
+        "baseDir" : "/home/Rebecca/data-benchmark/data/",
         "filter" : "lineitem.tbl.gz"
        }
     },
