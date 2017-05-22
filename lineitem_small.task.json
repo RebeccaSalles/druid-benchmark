@@ -87,7 +87,7 @@
       "type" : "index",
       "firehose" : {
         "type" : "local",
-        "baseDir" : "/home/Rebecca/druid-benchmark/data/",
+        "baseDir" : "data/",
         "filter" : "lineitem.tbl.gz"
        }
     },
