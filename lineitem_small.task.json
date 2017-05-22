@@ -1,6 +1,8 @@
 {
   "type" : "index_hadoop",
-  "hadoopDependencyCoordinates": null,
+  "hadoopDependencyCoordinates": null,  
+  "classpathPrefix" : null,
+  "context" : null,
   "config": {
     "dataSource" : "tpch_lineitem_small",
     "timestampSpec" : {
