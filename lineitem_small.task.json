@@ -1,6 +1,6 @@
 {
   "type" : "index_hadoop",
-  "hadoopCoordinates":"org.apache.hadoop:hadoop-client:2.3.0",
+  "hadoopCoordinates": null,
   "config": {
     "dataSource" : "tpch_lineitem_small",
     "timestampSpec" : {
