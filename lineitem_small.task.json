@@ -1,62 +1,56 @@
 {
   "type" : "index_hadoop",
-  "hadoopDependencyCoordinates": null,  
-  "classpathPrefix" : null,
-  "context" : null,
-  "config": {
-    "dataSource" : "tpch_lineitem_small",
-    "timestampSpec" : {
-      "column": "l_shipdate",
-      "format": "yyyy-MM-dd"
-    },
-    "dataSpec": {
-      "format": "tsv",
-      "delimiter": "|",
-      "columns": [
-        "l_orderkey",
-        "l_partkey",
-        "l_suppkey",
-        "l_linenumber",
-        "l_quantity",
-        "l_extendedprice",
-        "l_discount",
-        "l_tax",
-        "l_returnflag",
-        "l_linestatus",
-        "l_shipdate",
-        "l_commitdate",
-        "l_receiptdate",
-        "l_shipinstruct",
-        "l_shipmode",
-        "l_comment"
-      ],
-      "dimensions" : [
-        "l_orderkey",
-        "l_partkey",
-        "l_suppkey",
-        "l_linenumber",
-        "l_returnflag",
-        "l_linestatus",
-        "l_shipdate",
-        "l_commitdate",
-        "l_receiptdate",
-        "l_shipinstruct",
-        "l_shipmode",
-        "l_comment"
-      ]
-    },
-    "granularitySpec": {
-      "type": "arbitrary",
-      "intervals": [
-        "1980/2020"
-      ]
-    },
-    "pathSpec": {
-      "type": "static",
-      "paths": "/home/Rebecca/druid-benchmark/data/lineitem.tbl.gz"
-    },
-    "rollupSpec": {
-      "aggs": [
+  "spec" : {
+    "dataSchema" : {
+      "dataSource" : "tpch_lineitem_small",
+      "parser" : {
+        "type" : "string",
+        "parseSpec" : {
+          "format" : "tsv",
+          "delimiter" : "|",
+          "timestampSpec" : {
+            "column": "l_shipdate",
+            "format": "yyyy-MM-dd"
+          },
+          "columns": [
+            "l_orderkey",
+            "l_partkey",
+            "l_suppkey",
+            "l_linenumber",
+            "l_quantity",
+            "l_extendedprice",
+            "l_discount",
+            "l_tax",
+            "l_returnflag",
+            "l_linestatus",
+            "l_shipdate",
+            "l_commitdate",
+            "l_receiptdate",
+            "l_shipinstruct",
+            "l_shipmode",
+            "l_comment"
+          ],
+          "dimensionsSpec" : {
+            "dimensions" : [
+              "l_orderkey",
+              "l_partkey",
+              "l_suppkey",
+              "l_linenumber",
+              "l_returnflag",
+              "l_linestatus",
+              "l_shipdate",
+              "l_commitdate",
+              "l_receiptdate",
+              "l_shipinstruct",
+              "l_shipmode",
+              "l_comment"
+            ],
+            "dimensionExclusions" : [],
+            "spatialDimensions" : []
+          }
+        }
+      },
+      "metricsSpec" : [
         {
           "type": "count",
           "name": "count"
@@ -82,7 +76,58 @@
           "name": "L_TAX"
         }
       ],
-      "rollupGranularity": "day"
+      "granularitySpec": {
+        "type": "arbitrary",
+        "intervals": [
+          "1980/2020"
+        ]
+      }
+    },
+    "ioConfig" : {
+      "type" : "hadoop",
+      "inputSpec" : {
+        "type" : "static",
+        "paths" : "/home/Rebecca/druid-benchmark/data/lineitem.tbl.gz"
+      },
+      "metadataUpdateSpec" : null,
+      "segmentOutputPath" : null
+    },
+    "tuningConfig" : {
+      "type" : "hadoop",
+      "workingPath" : null,
+      "partitionsSpec" : {
+        "type" : "hashed",
+        "targetPartitionSize" : 5000000,
+        "maxPartitionSize" : 7500000,
+        "assumeGrouped" : false,
+        "numShards" : -1,
+        "partitionDimensions" : [ ]
+      },
+      "shardSpecs" : { },
+      "indexSpec" : {
+        "bitmap" : {
+          "type" : "concise"
+        },
+        "dimensionCompression" : "lz4",
+        "metricCompression" : "lz4",
+        "longEncoding" : "longs"
+      },
+      "maxRowsInMemory" : 75000,
+      "leaveIntermediate" : false,
+      "cleanupOnFailure" : true,
+      "overwriteFiles" : false,
+      "ignoreInvalidRows" : false,
+      "jobProperties" : { },
+      "combineText" : false,
+      "useCombiner" : false,
+      "buildV9Directly" : true,
+      "numBackgroundPersistThreads" : 0,
+      "forceExtendableShardSpecs" : false,
+      "useExplicitVersion" : false
     }
-  }
+  },
+  "hadoopDependencyCoordinates" : null,
+  "classpathPrefix" : null,
+  "context" : null,
+  "dataSource" : "tpch_lineitem_small"
 }
