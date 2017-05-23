@@ -87,7 +87,7 @@
       "type" : "hadoop",
       "inputSpec" : {
         "type" : "static",
-        "paths" : "/home/Rebecca/druid-benchmark/data/lineitem.tbl.gz"
+        "paths" : "/home/rsalles/druid-benchmark/data/lineitem.tbl.gz"
       },
       "metadataUpdateSpec" : null,
       "segmentOutputPath" : null
