@@ -57,23 +57,23 @@
         },
         {
           "type": "longSum",
-          "fieldName": "L_QUANTITY",
-          "name": "L_QUANTITY"
+          "fieldName": "l_quantity",
+          "name": "l_quantity"
         },
         {
           "type": "doubleSum",
-          "fieldName": "L_EXTENDEDPRICE",
-          "name": "L_EXTENDEDPRICE"
+          "fieldName": "l_extendedprice",
+          "name": "l_extendedprice"
         },
         {
           "type": "doubleSum",
-          "fieldName": "L_DISCOUNT",
-          "name": "L_DISCOUNT"
+          "fieldName": "l_discount",
+          "name": "l_discount"
         },
         {
           "type": "doubleSum",
-          "fieldName": "L_TAX",
-          "name": "L_TAX"
+          "fieldName": "l_tax",
+          "name": "l_tax"
         }
       ],
       "granularitySpec": {
