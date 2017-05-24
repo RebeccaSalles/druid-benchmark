@@ -13,7 +13,7 @@ do
   if [[ "$name" =~ "#" ]] ; then continue ; fi
   if [[ "$benchmark" != "" && "$name" != "$benchmark" ]] ; then continue ; fi
   for i in $(seq 1 $n) ; do 
-    t=$(( time -p ( echo $sql | mysql --host="$host" --user $user --password=$passwd --database tpch ) 2>&1 ) | grep real | sed -e 's/real *//')
+    t=$(( time -p ( echo psql --host="$host" --port=5432 --dbname=db-PPCIC-rsalles --username=$user --password=$passwd -a -f $sql ) 2>&1 ) | grep real | sed -e 's/real *//')
     echo "$name	$t"
   done
 done < queries-mysql.sql
