@@ -1,3 +1,5 @@
+--psql --host=127.0.0.1 --port=5432 --dbname=db-PPCIC-rsalles --username=rsalles
+
 CREATE TABLE LINEITEM
                       ( L_ORDERKEY    INTEGER NOT NULL,
                         L_PARTKEY     INTEGER NOT NULL,
@@ -14,13 +16,18 @@ CREATE TABLE LINEITEM
                         L_RECEIPTDATE DATE NOT NULL,
                         L_SHIPINSTRUCT CHAR(25) NOT NULL,
                         L_SHIPMODE     CHAR(10) NOT NULL,
-                        L_COMMENT      VARCHAR(44) NOT NULL) ENGINE=MyISAM;
+                        L_COMMENT      VARCHAR(44) NOT NULL,
+                        TEMP          VARCHAR(2));
 
-LOAD DATA LOCAL INFILE 'data/lineitem.tbl'
-  INTO TABLE LINEITEM FIELDS TERMINATED BY '|';
+--LOAD DATA LOCAL INFILE 'data/lineitem.tbl'
+--  INTO TABLE LINEITEM FIELDS TERMINATED BY '|';
 
-CREATE INDEX index_shipdate ON LINEITEM (L_SHIPDATE) USING BTREE;
-CREATE INDEX index_commitdate ON LINEITEM (L_COMMITDATE) USING BTREE;
-CREATE INDEX index_partkey ON LINEITEM (L_PARTKEY) USING BTREE;
-CREATE INDEX index_shipmode ON LINEITEM (L_SHIPMODE) USING BTREE;
-OPTIMIZE TABLE LINEITEM;
+\COPY lineitem FROM '/home/rsalles/druid-benchmark/data/lineitem.tbl' ( FORMAT CSV, DELIMITER('|') );
+ALTER TABLE lineitem DROP TEMP;
+
+CREATE INDEX index_shipdate ON LINEITEM USING BTREE (L_SHIPDATE);
+CREATE INDEX index_commitdate ON LINEITEM USING BTREE (L_COMMITDATE);
+CREATE INDEX index_partkey ON LINEITEM USING BTREE (L_PARTKEY);
+CREATE INDEX index_shipmode ON LINEITEM USING BTREE (L_SHIPMODE);
+--OPTIMIZE TABLE LINEITEM;
+VACUUM LINEITEM;
