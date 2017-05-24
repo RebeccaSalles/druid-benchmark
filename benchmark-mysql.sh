@@ -14,6 +14,6 @@ do
   if [[ "$benchmark" != "" && "$name" != "$benchmark" ]] ; then continue ; fi
   for i in $(seq 1 $n) ; do 
     t=$(( time -p ( echo PGPASSWORD=PIRGs30@slav psql -h localhost -p 5432 -d db-PPCIC-rsalles -U rsalles -a -f $sql ) 2>&1 ) | grep real | sed -e 's/real *//')
-    echo "$name	$t"
+    echo "$name	$t $sql"
   done
 done < queries-mysql.sql
