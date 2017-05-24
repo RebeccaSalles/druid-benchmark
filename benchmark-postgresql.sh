@@ -16,4 +16,4 @@ do
     t=$(( time -p ( PGPASSWORD=$passwd psql -h $host -p 5432 -d db-PPCIC-rsalles -U $user -a -c "$sql" ) 2>&1 ) | grep real | sed -e 's/real *//')
     echo "$name	$t"
   done
-done < queries-mysql.sql
+done < queries-postgresql.sql
